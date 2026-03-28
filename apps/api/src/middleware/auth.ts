@@ -80,7 +80,7 @@ export async function tenantContext(req: AuthRequest, res: Response, next: NextF
  * Scope checker - validates token has required scope
  */
 export function requireScope(...requiredScopes: string[]) {
-  return (req: AuthRequest, res: Response, next: NextFunction) => {
+  return (req: AuthRequest, res: Response, next: NextFunction): void => {
     const tokenScope = req.token_scope || [];
     
     // Check if token has any of the required scopes
@@ -89,11 +89,12 @@ export function requireScope(...requiredScopes: string[]) {
     );
     
     if (!hasScope) {
-      return res.status(403).json({
+      res.status(403).json({
         error: 'INSUFFICIENT_SCOPE',
         message: `Required scope: ${requiredScopes.join(' or ')}`,
         provided_scope: tokenScope,
       });
+      return;
     }
     
     next();
@@ -103,7 +104,7 @@ export function requireScope(...requiredScopes: string[]) {
 /**
  * Optional authentication - attaches user if token present, but doesn't require it
  */
-export function optionalAuth(req: AuthRequest, res: Response, next: NextFunction) {
+export function optionalAuth(req: AuthRequest, _res: Response, next: NextFunction) {
   try {
     const authHeader = req.headers.authorization;
     
@@ -120,8 +121,5 @@ export function optionalAuth(req: AuthRequest, res: Response, next: NextFunction
   } catch (error) {
     // Ignore auth errors for optional auth
     next();
-  }
-}
-xt();
   }
 }

@@ -1,4 +1,4 @@
-import { pool, withTransaction, getClient } from '../db/index.js';
+import { pool, withTransaction } from '../db/index.js';
 import { logger } from '../utils/logger.js';
 import { NotFoundError } from '../middleware/errorHandler.js';
 
@@ -220,6 +220,4 @@ export async function getTenantBalance(tenant_id: string): Promise<{
   }
   
   return result.rows[0];
-}
-0];
 }
