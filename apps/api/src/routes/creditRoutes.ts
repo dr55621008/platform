@@ -1,9 +1,7 @@
 import { Router, Response, NextFunction } from 'express';
-import { AuthRequest } from '../middleware/auth.js';
 import { z } from 'zod';
-import { authenticate, tenantContext } from '../middleware/auth.js';
+import { authenticate, tenantContext, AuthRequest } from '../middleware/auth.js';
 import { addCredits, getBalance, getTransactionHistory, checkBalance } from '../services/creditService.js';
-import { AuthRequest } from '../middleware/auth.js';
 
 export const creditRoutes = Router();
 

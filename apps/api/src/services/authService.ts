@@ -24,7 +24,7 @@ export interface TokenPair {
  */
 export function generateAccessToken(payload: TokenPayload): string {
   return jwt.sign(payload, config.jwtSecret, {
-    expiresIn: config.jwtExpiresIn,
+    expiresIn: config.jwtExpiresIn as string | number,
     issuer: config.jwtIssuer,
   });
 }

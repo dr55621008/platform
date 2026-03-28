@@ -207,7 +207,7 @@ export async function revokeEntitlement(tenant_id: string, skill_id: string): Pr
 export async function executeSkill(
   tenant_id: string,
   skill_id: string,
-  _params: Record<string, any>,
+  params: Record<string, any>,
   options: {
     user_id?: string;
     conversation_id?: string;

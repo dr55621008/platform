@@ -37,7 +37,7 @@ export function authenticate(req: AuthRequest, _res: Response, next: NextFunctio
 /**
  * Tenant context middleware - ensures tenant exists and is active
  */
-export async function tenantContext(req: AuthRequest, res: Response, next: NextFunction) {
+export async function tenantContext(req: AuthRequest, res: Response, next: NextFunction): Promise<void> {
   try {
     if (!req.tenant_id) {
       throw new UnauthorizedError('Tenant ID not found in token');
