@@ -1,7 +1,7 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { z } from 'zod';
 import { generateTokenPair, refreshAccessToken, revokeToken, validateAccessToken } from '../services/authService.js';
-import { BadRequestError, UnauthorizedError } from '../middleware/errorHandler.js';
+import { UnauthorizedError } from '../middleware/errorHandler.js';
 
 export const authRoutes = Router();
 

@@ -1,4 +1,5 @@
-import { Router, Request, Response, NextFunction } from 'express';
+import { Router, Response, NextFunction } from 'express';
+import { AuthRequest } from '../middleware/auth.js';
 import { z } from 'zod';
 import { authenticate, tenantContext } from '../middleware/auth.js';
 import { addCredits, getBalance, getTransactionHistory, checkBalance } from '../services/creditService.js';

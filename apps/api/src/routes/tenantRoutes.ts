@@ -10,7 +10,7 @@ import {
   listTenants,
   getTenantBalance,
 } from '../services/tenantService.js';
-import { BadRequestError, NotFoundError } from '../middleware/errorHandler.js';
+import { BadRequestError } from '../middleware/errorHandler.js';
 import { AuthRequest } from '../middleware/auth.js';
 
 export const tenantRoutes = Router();

@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import { randomUUID } from 'crypto';
 import { pool } from '../db/index.js';
 import { config } from '../config/index.js';
-import { UnauthorizedError, BadRequestError } from '../middleware/errorHandler.js';
+import { UnauthorizedError } from '../middleware/errorHandler.js';
 import { logger } from '../utils/logger.js';
 
 export interface TokenPayload {
@@ -42,7 +42,8 @@ export async function generateRefreshToken(
   const tokenHash = Buffer.from(tokenId).toString('base64');
   
   const expiresAt = new Date();
-  expiresAt.setDate(expiresAt.getDate() + parseInt(config.jwtRefreshExpiresIn));
+  const refreshDays = parseInt(config.jwtRefreshExpiresIn) || 30;
+  expiresAt.setDate(expiresAt.getDate() + refreshDays);
   
   await pool.query(
     `INSERT INTO refresh_tokens (id, tenant_id, user_id, token_hash, device_info, ip_address, expires_at)

@@ -74,7 +74,7 @@ VALUES (
         },
         "required": ["market", "timeframe"]
     }'::jsonb,
-    '{"category": "analytics", "complexity": "high", "data_sources": ["public", "licensed"]}':jsonb
+    '{"category": "analytics", "complexity": "high", "data_sources": ["public", "licensed"]}'::jsonb
 );
 
 -- API Integration (Enterprise Tier)

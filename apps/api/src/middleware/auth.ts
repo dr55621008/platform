@@ -12,7 +12,7 @@ export interface AuthRequest extends Request {
 /**
  * Authentication middleware - validates JWT token
  */
-export function authenticate(req: AuthRequest, res: Response, next: NextFunction) {
+export function authenticate(req: AuthRequest, _res: Response, next: NextFunction) {
   try {
     const authHeader = req.headers.authorization;
     
@@ -120,5 +120,8 @@ export function optionalAuth(req: AuthRequest, res: Response, next: NextFunction
   } catch (error) {
     // Ignore auth errors for optional auth
     next();
+  }
+}
+xt();
   }
 }
