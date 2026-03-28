@@ -3,7 +3,7 @@ import {
   Group, Title, Text, Card, Stack, TextInput, Button, Switch,
   Select, Divider, Alert, Box, Code,
 } from '@mantine/core';
-import { IconBrandGithub, IconDatabase, IconMail, IconBell } from '@tabler/icons-react';
+import { IconBrandGithub, IconDatabase, IconBell } from '@tabler/icons-react';
 
 export default function Settings() {
   const [saving, setSaving] = useState(false);
@@ -36,11 +36,6 @@ export default function Settings() {
               defaultValue="https://api.brokerhub.com"
               description="Base URL for API endpoints"
             />
-            <TextInput
-              label="Admin URL"
-              defaultValue="https://admin.brokerhub.com"
-              description="Admin dashboard URL"
-            />
             <Select
               label="Default Region"
               defaultValue="ap-east-1"
@@ -67,22 +62,6 @@ export default function Settings() {
               defaultValue="••••••••••••••••"
               description="Secret key for JWT token signing"
             />
-            <Group gap="md">
-              <Box style={{ flex: 1 }}>
-                <TextInput
-                  label="Token Expiry"
-                  defaultValue="15m"
-                  description="Access token lifetime"
-                />
-              </Box>
-              <Box style={{ flex: 1 }}>
-                <TextInput
-                  label="Refresh Token Expiry"
-                  defaultValue="30d"
-                  description="Refresh token lifetime"
-                />
-              </Box>
-            </Group>
             <Alert title="Security Note" color="orange" radius="md">
               Rotate JWT secrets regularly. All active sessions will be invalidated.
             </Alert>
@@ -105,11 +84,6 @@ export default function Settings() {
             <Switch
               label="Low Credit Alerts"
               description="Notify when tenant credits fall below threshold"
-              defaultChecked
-            />
-            <Switch
-              label="Suspension Alerts"
-              description="Notify before tenant suspension"
               defaultChecked
             />
             <TextInput
@@ -139,11 +113,6 @@ export default function Settings() {
               description="Automatic credit purchase when balance is low"
             />
             <Switch
-              label="Advanced Analytics"
-              description="Enable advanced analytics dashboard"
-              defaultChecked
-            />
-            <Switch
               label="API Webhooks"
               description="Enable webhook callbacks for skill executions"
               defaultChecked
@@ -161,20 +130,8 @@ export default function Settings() {
             </Group>
             <Divider />
             <Group justify="space-between">
-              <Text c="dimmed">Build Date</Text>
-              <Code>2026-03-28</Code>
-            </Group>
-            <Divider />
-            <Group justify="space-between">
               <Text c="dimmed">Environment</Text>
               <Code>development</Code>
-            </Group>
-            <Divider />
-            <Group justify="space-between">
-              <Text c="dimmed">GitHub</Text>
-              <Button variant="subtle" size="xs" component="a" href="https://github.com/dr55621008/platform" target="_blank">
-                View Repository
-              </Button>
             </Group>
           </Stack>
         </Card>
@@ -186,9 +143,6 @@ export default function Settings() {
           </Button>
         </Group>
       </Stack>
-    </div>
-  );
-}
     </div>
   );
 }
