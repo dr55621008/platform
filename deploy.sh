@@ -1,5 +1,5 @@
 #!/bin/bash
-# brokerHub One-Command Deploy
+# brokerHub One-Command Deploy (Docker Pre-Installed)
 # Usage: curl -fsSL https://raw.githubusercontent.com/dr55621008/platform/main/deploy.sh | bash
 
 set -e
