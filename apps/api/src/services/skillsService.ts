@@ -1,7 +1,6 @@
 import { pool, withTransaction } from '../db/index.js';
 import { logger } from '../utils/logger.js';
-import { NotFoundError, ForbiddenError, BadRequestError } from '../middleware/errorHandler.js';
-import { useCredits } from './creditService.js';
+import { NotFoundError, ForbiddenError } from '../middleware/errorHandler.js';
 
 export interface Skill {
   skill_id: string;

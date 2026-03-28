@@ -23,10 +23,11 @@ export interface TokenPair {
  * Generate JWT access token
  */
 export function generateAccessToken(payload: TokenPayload): string {
-  return jwt.sign(payload, config.jwtSecret, {
-    expiresIn: config.jwtExpiresIn as string | number,
+  const options: jwt.SignOptions = {
+    expiresIn: config.jwtExpiresIn,
     issuer: config.jwtIssuer,
-  });
+  };
+  return jwt.sign(payload, config.jwtSecret, options);
 }
 
 /**
