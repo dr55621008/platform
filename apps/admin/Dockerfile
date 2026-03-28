@@ -3,21 +3,18 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Install build dependencies
-RUN apk add --no-cache python3 make g++
-
 # Copy package files
 COPY package*.json ./
 COPY apps/admin/package*.json ./apps/admin/
 
 # Install dependencies
+WORKDIR /app/apps/admin
 RUN npm ci
 
 # Copy source code
-COPY apps/admin ./apps/admin
+COPY apps/admin ./
 
 # Build React app
-WORKDIR /app/apps/admin
 RUN npm run build
 
 # ============================================

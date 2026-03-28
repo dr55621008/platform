@@ -6,21 +6,21 @@ WORKDIR /app
 # Install build dependencies
 RUN apk add --no-cache python3 make g++
 
-# Copy package files
+# Copy root package files
 COPY package*.json ./
-COPY apps/api/package*.json ./apps/api/
-COPY packages/*/package*.json ./packages/
 
-# Install dependencies
+# Copy API package files
+COPY apps/api/package*.json ./apps/api/
+
+# Install dependencies for API
+WORKDIR /app/apps/api
 RUN npm ci --only=production
 
-# Copy source code
-COPY apps/api ./apps/api
-COPY packages ./packages
+# Copy API source code
+COPY apps/api ./
 
 # Build TypeScript
-WORKDIR /app/apps/api
-RUN npx tsc || echo "Build completed"
+RUN npx tsc
 
 # ============================================
 # Production Image
@@ -53,6 +53,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 
 # Start with dumb-init for proper signal handling
 ENTRYPOINT ["dumb-init", "--"]
-CMD ["node", "dist/index.js"]
-", "--"]
 CMD ["node", "dist/index.js"]

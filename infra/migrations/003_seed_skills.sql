@@ -15,8 +15,8 @@ VALUES (
     'Basic Q&A',
     'General question answering and information retrieval',
     'starter',
-    1,  -- 1 credit per use
-    100,  -- 100 requests per hour
+    1,
+    100,
     '{
         "type": "object",
         "properties": {
@@ -35,9 +35,9 @@ VALUES (
     'Document Analysis',
     'Extract insights, summarize, and analyze uploaded documents',
     'professional',
-    5,  -- 5 credits per document
-    50,  -- 50 credits per 100 documents batch
-    20,  -- 20 requests per hour
+    5,
+    50,
+    20,
     '{
         "type": "object",
         "properties": {
@@ -61,9 +61,9 @@ VALUES (
     'Market Analytics',
     'Generate market reports, trends, and competitive intelligence',
     'enterprise',
-    10,  -- 10 credits per report
-    10,  -- 10 requests per hour
-    50,  -- 50 requests per day
+    10,
+    10,
+    50,
     '{
         "type": "object",
         "properties": {
@@ -84,8 +84,8 @@ VALUES (
     'API Integration',
     'Connect to external APIs and services with data transformation',
     'enterprise',
-    2,  -- 2 credits per call
-    50,  -- 50 calls per hour
+    2,
+    50,
     '{
         "type": "object",
         "properties": {
@@ -107,8 +107,8 @@ VALUES (
     'Compliance Check',
     'Review documents and communications for regulatory compliance',
     'professional',
-    8,  -- 8 credits per check
-    15,  -- 15 checks per hour
+    8,
+    15,
     '{
         "type": "object",
         "properties": {
@@ -122,37 +122,9 @@ VALUES (
 );
 
 -- ============================================
--- Default Entitlements by Tier
--- ============================================
-
--- Starter Tier Entitlements
-INSERT INTO tenant_skill_entitlements (tenant_id, skill_id, enabled)
-SELECT 
-    'demo_starter_tenant'::VARCHAR,  -- Demo tenant ID
-    skill_id,
-    true
-FROM skills_registry
-WHERE tier = 'starter';
-
--- Professional Tier Entitlements (includes Starter)
-INSERT INTO tenant_skill_entitlements (tenant_id, skill_id, enabled)
-SELECT 
-    'demo_professional_tenant'::VARCHAR,
-    skill_id,
-    true
-FROM skills_registry
-WHERE tier IN ('starter', 'professional');
-
--- Enterprise Tier Entitlements (includes all)
-INSERT INTO tenant_skill_entitlements (tenant_id, skill_id, enabled)
-SELECT 
-    'demo_enterprise_tenant'::VARCHAR,
-    skill_id,
-    true
-FROM skills_registry
-WHERE enabled = true;
-
--- ============================================
 -- Comments
 -- ============================================
 COMMENT ON TABLE skills_registry IS 'Available skills with pricing - seed data includes Phase 1 skills';
+
+-- Note: Tenant skill entitlements are granted programmatically when tenants are created
+-- See: apps/api/src/services/tenantService.ts - createTenant()
