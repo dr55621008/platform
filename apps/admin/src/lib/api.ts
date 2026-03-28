@@ -113,23 +113,23 @@ export const tenantsApi = {
     return response.data;
   },
 
-  update: async (tenant_id: string, data: any) => {
-    const response = await api.put(`/tenants/${tenant_id}`, data);
+  update: async (_tenant_id: string, data: any) => {
+    const response = await api.put(`/tenants/${_tenant_id}`, data);
     return response.data;
   },
 
-  approve: async (tenant_id: string) => {
-    const response = await api.post(`/tenants/${tenant_id}/approve`);
+  approve: async (_tenant_id: string) => {
+    const response = await api.post(`/tenants/${_tenant_id}/approve`);
     return response.data;
   },
 
-  suspend: async (tenant_id: string, reason: string) => {
-    const response = await api.post(`/tenants/${tenant_id}/suspend`, { reason });
+  suspend: async (_tenant_id: string, reason: string) => {
+    const response = await api.post(`/tenants/${_tenant_id}/suspend`, { reason });
     return response.data;
   },
 
-  getBalance: async (tenant_id: string) => {
-    const response = await api.get(`/tenants/${tenant_id}/balance`);
+  getBalance: async (_tenant_id: string) => {
+    const response = await api.get(`/tenants/${_tenant_id}/balance`);
     return response.data;
   },
 };
