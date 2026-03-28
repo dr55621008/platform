@@ -1,0 +1,70 @@
+<svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+  <!-- brokerHub Logo - Vertical Stack -->
+  <!-- Icon on top, wordmark below, tagline at bottom -->
+  
+  <!-- Icon: Hexagon with "b" and heartbeat -->
+  <g transform="translate(50, 20)">
+    <!-- Outer "b" shape forming hexagon left side -->
+    <path 
+      d="M 28,5 L 28,45 M 28,12 L 50,12 A 22,22 0 0,1 50,56 L 28,56" 
+      fill="none" 
+      stroke="#1a3a5c" 
+      stroke-width="8" 
+      stroke-linecap="round"
+    />
+    
+    <!-- Hexagon right side (completing the shape) -->
+    <path 
+      d="M 50,12 L 72,25 L 72,43 L 50,56" 
+      fill="none" 
+      stroke="#1a3a5c" 
+      stroke-width="8" 
+      stroke-linecap="round" 
+      stroke-linejoin="round"
+    />
+    
+    <!-- Heartbeat pulse inside hexagon -->
+    <polyline 
+      points="38,34 44,34 47,28 51,40 55,34 62,34" 
+      fill="none" 
+      stroke="#00b4d8" 
+      stroke-width="5" 
+      stroke-linecap="round" 
+      stroke-linejoin="round"
+    />
+  </g>
+  
+  <!-- Wordmark: "broker" (bold, navy) -->
+  <text 
+    x="100" 
+    y="140" 
+    font-family="Montserrat, sans-serif" 
+    font-weight="700" 
+    font-size="42" 
+    fill="#1a3a5c"
+    text-anchor="middle"
+  >broker</text>
+  
+  <!-- Wordmark: "Hub" (regular, cyan) -->
+  <text 
+    x="100" 
+    y="140" 
+    font-family="Montserrat, sans-serif" 
+    font-weight="400" 
+    font-size="42" 
+    fill="#00b4d8"
+    text-anchor="middle"
+    dx="65"
+  >Hub</text>
+  
+  <!-- Tagline -->
+  <text 
+    x="100" 
+    y="170" 
+    font-family="Inter, sans-serif" 
+    font-weight="400" 
+    font-size="14" 
+    fill="#6c757d"
+    text-anchor="middle"
+  >Your 24/7 AI Admin</text>
+</svg>

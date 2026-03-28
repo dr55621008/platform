@@ -1,0 +1,39 @@
+<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- brokerHub App Icon -->
+  <!-- Square with rounded corners, icon centered -->
+  
+  <!-- Background (white) -->
+  <rect width="1024" height="1024" rx="226" ry="226" fill="#ffffff"/>
+  
+  <!-- Icon: Hexagon with "b" and heartbeat (centered, scaled up) -->
+  <g transform="translate(262, 262)">
+    <!-- Outer "b" shape forming hexagon left side -->
+    <path 
+      d="M 73,13 L 73,115 M 73,31 L 129,31 A 57,57 0 0,1 129,144 L 73,144" 
+      fill="none" 
+      stroke="#1a3a5c" 
+      stroke-width="21" 
+      stroke-linecap="round"
+    />
+    
+    <!-- Hexagon right side (completing the shape) -->
+    <path 
+      d="M 129,31 L 186,66 L 186,111 L 129,144" 
+      fill="none" 
+      stroke="#1a3a5c" 
+      stroke-width="21" 
+      stroke-linecap="round" 
+      stroke-linejoin="round"
+    />
+    
+    <!-- Heartbeat pulse inside hexagon -->
+    <polyline 
+      points="99,88 114,88 122,72 132,103 142,88 160,88" 
+      fill="none" 
+      stroke="#00b4d8" 
+      stroke-width="13" 
+      stroke-linecap="round" 
+      stroke-linejoin="round"
+    />
+  </g>
+</svg>
