@@ -68,9 +68,10 @@ export default function App() {
             <Group>
               <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" color="white" />
               <Group gap="sm">
-                <Image src={logo} h={36} fit="contain" />
-                <Text c="white" fz="lg" fw={700}>broker</Text>
-                <Text c="accent.5" fz="lg" fw={400}>Hub</Text>
+                <Image src={logo} h={40} fit="contain" visibleFrom="sm" />
+                <Image src={logoIcon} h={40} fit="contain" hiddenFrom="sm" />
+                <Text c="white" fz="lg" fw={700} visibleFrom="sm">broker</Text>
+                <Text c="accent.5" fz="lg" fw={400} visibleFrom="sm">Hub</Text>
               </Group>
             </Group>
             <Group gap="xs">
