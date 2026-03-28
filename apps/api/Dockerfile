@@ -12,9 +12,9 @@ COPY package*.json ./
 # Copy API package files
 COPY apps/api/package*.json ./apps/api/
 
-# Install dependencies for API
+# Install dependencies for API (including dev for build)
 WORKDIR /app/apps/api
-RUN npm ci --only=production
+RUN npm ci
 
 # Copy API source code
 COPY apps/api ./
