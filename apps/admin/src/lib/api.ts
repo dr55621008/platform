@@ -103,8 +103,8 @@ export const tenantsApi = {
     return response.data;
   },
 
-  get: async (tenant_id: string) => {
-    const response = await api.get(`/tenants/${tenant_id}`);
+  get: async (_tenant_id: string) => {
+    const response = await api.get(`/tenants/${_tenant_id}`);
     return response.data;
   },
 

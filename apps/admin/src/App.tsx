@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AppShell, Burger, Group, Image, Text } from '@mantine/core';
+import { AppShell, Burger, Group, Image, Text, Box } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconHome, IconUsers, IconCreditCard, IconSettings, IconActivity } from '@tabler/icons-react';
 import Dashboard from './pages/Dashboard';
@@ -112,4 +112,6 @@ export default function App() {
       </AppShell>
     </BrowserRouter>
   );
+}
+);
 }

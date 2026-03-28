@@ -1,23 +1,11 @@
 import { useState } from 'react';
 import {
   Group, Title, Text, SimpleGrid, Card, RingProgress, Center, Stack,
-  Badge, Table, Button, Loader, Alert,
+  Badge, Table, Button,
 } from '@mantine/core';
-import { IconTrendingUp, IconUsers, IconCreditCard, IconActivity, IconAlertTriangle } from '@tabler/icons-react';
-
-interface Stats {
-  totalTenants: number;
-  activeTenants: number;
-  totalCredits: number;
-  creditsIssued: number;
-  skillExecutions: number;
-}
+import { IconUsers, IconCreditCard, IconActivity, IconAlertTriangle } from '@tabler/icons-react';
 
 export default function Dashboard() {
-  const [loading, setLoading] = useState(false);
-  const [stats, setStats] = useState<Stats | null>(null);
-
-  // Mock data for now - will be replaced with API calls
   const mockStats = {
     totalTenants: 12,
     activeTenants: 9,
