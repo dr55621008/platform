@@ -25,10 +25,10 @@ function NavbarLink({ icon: Icon, label, active, onClick }: { icon: any; label: 
         textDecoration: 'none',
         marginBottom: '4px',
       }}
-      onMouseEnter={(e) => {
+      onMouseEnter={(e: any) => {
         if (!active) e.currentTarget.style.backgroundColor = 'var(--mantine-color-gray-1)';
       }}
-      onMouseLeave={(e) => {
+      onMouseLeave={(e: any) => {
         if (!active) e.currentTarget.style.backgroundColor = 'transparent';
       }}
     >
@@ -112,6 +112,4 @@ export default function App() {
       </AppShell>
     </BrowserRouter>
   );
-}
-);
 }
