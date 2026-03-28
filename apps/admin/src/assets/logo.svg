@@ -1,56 +1,66 @@
-<svg viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 280 60" xmlns="http://www.w3.org/2000/svg">
   <!-- Hexagonal Node with "b" -->
   <defs>
     <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0A192F"/>
-      <stop offset="100%" style="stop-color:#00D4FF"/>
+      <stop offset="0%" style="stop-color:#1a3a5c"/>
+      <stop offset="100%" style="stop-color:#00b4d8"/>
     </linearGradient>
   </defs>
   
   <!-- Hexagon -->
   <polygon 
-    points="25,5 45,5 55,22 45,40 25,40 15,22" 
+    points="30,8 50,8 60,25 50,42 30,42 20,25" 
     fill="none" 
     stroke="url(#brandGradient)" 
-    stroke-width="3"
+    stroke-width="3.5"
   />
   
   <!-- Stylized "b" -->
   <path 
-    d="M 28,15 L 28,35 M 28,20 L 38,20 A 6,6 0 0,1 38,32 L 28,32" 
+    d="M 33,17 L 33,37 M 33,22 L 43,22 A 6.5,6.5 0 0,1 43,34 L 33,34" 
     fill="none" 
-    stroke="#0A192F" 
-    stroke-width="3" 
+    stroke="#1a3a5c" 
+    stroke-width="3.5" 
     stroke-linecap="round"
   />
   
   <!-- ECG Heartbeat Line -->
   <polyline 
-    points="15,22 20,22 22,18 24,26 26,22 30,22 32,22" 
+    points="20,25 25,25 27,20 29,30 31,25 35,25 37,25" 
     fill="none" 
-    stroke="#00D4FF" 
-    stroke-width="2" 
+    stroke="#00b4d8" 
+    stroke-width="2.5" 
     stroke-linecap="round" 
     stroke-linejoin="round"
   />
   
-  <!-- Wordmark: "broker" (bold) -->
+  <!-- Wordmark: "broker" (bold, navy) -->
   <text 
-    x="65" 
-    y="32" 
+    x="70" 
+    y="35" 
     font-family="Montserrat, sans-serif" 
     font-weight="700" 
-    font-size="24" 
-    fill="#0A192F"
+    font-size="28" 
+    fill="#1a3a5c"
   >broker</text>
   
-  <!-- Wordmark: "Hub" (regular) -->
+  <!-- Wordmark: "Hub" (regular, cyan) -->
   <text 
-    x="135" 
-    y="32" 
+    x="155" 
+    y="35" 
     font-family="Montserrat, sans-serif" 
     font-weight="400" 
-    font-size="24" 
-    fill="#00D4FF"
+    font-size="28" 
+    fill="#00b4d8"
   >Hub</text>
+  
+  <!-- Tagline -->
+  <text 
+    x="70" 
+    y="52" 
+    font-family="Inter, sans-serif" 
+    font-weight="400" 
+    font-size="11" 
+    fill="#6c757d"
+  >Your 24/7 AI Admin</text>
 </svg>
