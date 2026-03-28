@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import {
   Group, Title, Text, Card, SimpleGrid, Table, Badge, Button, Modal,
-  TextInput, NumberInput, Stack, Alert, RingProgress, Center, Box,
+  TextInput, NumberInput, Stack, Alert, RingProgress, Center,
 } from '@mantine/core';
-import { IconPlus, IconTrendingUp, IconDownload } from '@tabler/icons-react';
+import { IconPlus, IconDownload } from '@tabler/icons-react';
 
 interface Transaction {
   id: number;

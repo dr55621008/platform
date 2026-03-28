@@ -18,7 +18,7 @@ export default function Dashboard() {
   const [stats, setStats] = useState<Stats | null>(null);
 
   // Mock data for now - will be replaced with API calls
-  const mockStats: Stats = {
+  const mockStats = {
     totalTenants: 12,
     activeTenants: 9,
     totalCredits: 150000,
