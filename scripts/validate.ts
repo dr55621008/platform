@@ -46,7 +46,7 @@ function info(message: string) {
 const workspaceRoot = resolve(__dirname, '..');
 let passed = 0;
 let failed = 0;
-let warnings = 0;
+const warnings = 0;
 
 function test(name: string, fn: () => boolean | void): void {
   try {
