@@ -41,7 +41,7 @@ export default function Skills() {
       case 'basic_qa': return <IconMessage size={20} />;
       case 'document_analysis': return <IconFileText size={20} />;
       case 'compliance_check': return <IconSettings size={20} />;
-      case 'market_analytics': return <IconAnalytics size={20} />;
+      case 'market_analytics': return <IconFileAnalytics size={20} />;
       case 'api_integration': return <IconCode size={20} />;
       default: return <IconSettings size={20} />;
     }

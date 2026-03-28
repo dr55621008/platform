@@ -124,7 +124,7 @@ export default function Settings() {
         {/* Feature Flags */}
         <Card withBorder>
           <Group mb="md">
-            <IconSettings size={24} />
+            <IconBell size={24} />
             <Title order={4}>Feature Flags</Title>
           </Group>
 
@@ -186,6 +186,9 @@ export default function Settings() {
           </Button>
         </Group>
       </Stack>
+    </div>
+  );
+}
     </div>
   );
 }

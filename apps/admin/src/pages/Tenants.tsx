@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {
   Group, Title, Text, Table, Badge, Button, Modal, TextInput,
-  Select, Stack, Box, Alert, ActionIcon, Menu,
+  Select, Stack, Alert, ActionIcon, Menu,
 } from '@mantine/core';
 import { IconPlus, IconDots, IconEdit, IconTrash, IconCheck, IconX } from '@tabler/icons-react';
 
