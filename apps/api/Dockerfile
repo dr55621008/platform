@@ -1,10 +1,10 @@
 # brokerHub API Service - Production Dockerfile
-FROM node:20-alpine AS builder
+FROM node:20 AS builder
 
 WORKDIR /app
 
 # Install build dependencies
-RUN apk add --no-cache python3 make g++
+RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
 
 # Copy root package files
 COPY package*.json ./
@@ -29,12 +29,12 @@ FROM node:20-slim
 
 WORKDIR /app
 
-# Install runtime dependencies
-RUN apk add --no-cache dumb-init
+# Install dumb-init for proper signal handling
+RUN apt-get update && apt-get install -y dumb-init && rm -rf /var/lib/apt/lists/*
 
 # Create non-root user
-RUN addgroup -g 1001 -S nodejs && \
-    adduser -S nodejs -u 1001
+RUN groupadd -g 1001 nodejs && \
+    useradd -u 1001 -g nodejs -s /bin/bash -d /home/nodejs nodejs
 
 # Copy built artifacts from builder
 COPY --from=builder --chown=nodejs:nodejs /app/apps/api/dist ./dist
