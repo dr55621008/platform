@@ -37,7 +37,7 @@ export function authenticate(req: AuthRequest, _res: Response, next: NextFunctio
 /**
  * Tenant context middleware - ensures tenant exists and is active
  */
-export async function tenantContext(req: AuthRequest, res: Response, next: NextFunction): Promise<void> {
+export async function tenantContext(req: AuthRequest, res: Response, next: NextFunction) {
   try {
     if (!req.tenant_id) {
       throw new UnauthorizedError('Tenant ID not found in token');
@@ -47,24 +47,27 @@ export async function tenantContext(req: AuthRequest, res: Response, next: NextF
     
     // Check tenant status
     if (tenant.status === 'suspended') {
-      return res.status(403).json({
+      res.status(403).json({
         error: 'TENANT_SUSPENDED',
         message: `Tenant is suspended. Reason: ${tenant.suspended_reason || 'Not specified'}`,
       });
+      return;
     }
     
     if (tenant.status === 'terminated') {
-      return res.status(403).json({
+      res.status(403).json({
         error: 'TENANT_TERMINATED',
         message: 'Tenant account has been terminated',
       });
+      return;
     }
     
     if (tenant.status === 'pending') {
-      return res.status(403).json({
+      res.status(403).json({
         error: 'TENANT_PENDING',
         message: 'Tenant account is pending approval',
       });
+      return;
     }
     
     // Attach tenant to request
