@@ -87,7 +87,7 @@ export default function Dashboard() {
               <Text c="dimmed" size="xs" tt="uppercase" fw={700}>Skill Executions</Text>
               <Title order={3} mt="sm">{mockStats.skillExecutions.toLocaleString()}</Title>
               <Text size="xs" c="green.6" mt={4}>
-                <IconTrendingUp size={12} /> +12% this week
+                +12% this week
               </Text>
             </Stack>
             <Center>
@@ -209,5 +209,8 @@ export default function Dashboard() {
         </Card>
       </SimpleGrid>
     </div>
+  );
+}
+iv>
   );
 }

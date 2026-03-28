@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {
   Group, Title, Text, Card, Stack, TextInput, Button, Switch,
-  Select, Divider, Alert, Box, Code,
+  Select, Divider, Alert, Code,
 } from '@mantine/core';
 import { IconBrandGithub, IconDatabase, IconBell } from '@tabler/icons-react';
 

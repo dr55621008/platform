@@ -3,7 +3,7 @@ import {
   Group, Title, Text, Table, Badge, Card, SimpleGrid, Stack, Box,
   Button, Modal, TextInput, NumberInput, Switch, Select,
 } from '@mantine/core';
-import { IconCode, IconAnalytics, IconFileText, IconMessage, IconSettings } from '@tabler/icons-react';
+import { IconCode, IconFileText, IconMessage, IconSettings } from '@tabler/icons-react';
 
 interface Skill {
   skill_id: string;
@@ -41,7 +41,7 @@ export default function Skills() {
       case 'basic_qa': return <IconMessage size={20} />;
       case 'document_analysis': return <IconFileText size={20} />;
       case 'compliance_check': return <IconSettings size={20} />;
-      case 'market_analytics': return <IconFileAnalytics size={20} />;
+      case 'market_analytics': return <IconSettings size={20} />;
       case 'api_integration': return <IconCode size={20} />;
       default: return <IconSettings size={20} />;
     }
