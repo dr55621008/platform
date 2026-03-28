@@ -1,0 +1,50 @@
+{
+  "name": "@brokerhub/api",
+  "version": "0.1.0",
+  "description": "brokerHub Core API Service",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src --ext .ts"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "compression": "^1.7.4",
+    "morgan": "^1.10.0",
+    
+    "pg": "^8.11.3",
+    "redis": "^4.6.12",
+    
+    "jsonwebtoken": "^9.0.2",
+    "bcrypt": "^5.1.1",
+    "uuid": "^9.0.1",
+    
+    "zod": "^3.22.4",
+    "dotenv": "^16.3.1",
+    
+    "winston": "^3.11.0",
+    
+    "aws-sdk": "^2.1530.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.0",
+    "@types/cors": "^2.8.17",
+    "@types/compression": "^1.7.5",
+    "@types/morgan": "^1.9.9",
+    "@types/pg": "^8.10.9",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/bcrypt": "^5.0.2",
+    "@types/uuid": "^9.0.7",
+    "typescript": "^5.3.0",
+    "tsx": "^4.7.0",
+    "vitest": "^1.2.0",
+    "eslint": "^8.56.0"
+  }
+}

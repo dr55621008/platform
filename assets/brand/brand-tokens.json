@@ -1,0 +1,107 @@
+{
+  "colors": {
+    "primary": {
+      "name": "Trust Blue",
+      "hex": "#0A192F",
+      "rgb": "10, 25, 47",
+      "hsl": "213, 65%, 11%"
+    },
+    "accent": {
+      "name": "Electric Cyan",
+      "hex": "#00D4FF",
+      "rgb": "0, 212, 255",
+      "hsl": "189, 100%, 50%"
+    },
+    "neutral": {
+      "white": "#FFFFFF",
+      "lightGrey": "#F5F7FA",
+      "mediumGrey": "#A0AEC0",
+      "darkGrey": "#4A5568",
+      "black": "#1A202C"
+    },
+    "semantic": {
+      "success": "#48BB78",
+      "warning": "#ED8936",
+      "error": "#F56565",
+      "info": "#4299E1"
+    }
+  },
+  "typography": {
+    "primary": {
+      "family": "Inter",
+      "stack": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+      "weights": {
+        "regular": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700
+      }
+    },
+    "secondary": {
+      "family": "Montserrat",
+      "stack": "Montserrat, 'Inter', sans-serif",
+      "weights": {
+        "regular": 400,
+        "semibold": 600,
+        "bold": 700
+      }
+    },
+    "sizes": {
+      "xs": "0.75rem",
+      "sm": "0.875rem",
+      "base": "1rem",
+      "lg": "1.125rem",
+      "xl": "1.25rem",
+      "2xl": "1.5rem",
+      "3xl": "1.875rem",
+      "4xl": "2.25rem"
+    }
+  },
+  "wordmark": {
+    "bold": "broker",
+    "regular": "Hub",
+    "format": "brokerHub"
+  },
+  "tagline": "Your 24/7 AI Admin",
+  "spacing": {
+    "xs": "0.25rem",
+    "sm": "0.5rem",
+    "md": "1rem",
+    "lg": "1.5rem",
+    "xl": "2rem",
+    "2xl": "3rem",
+    "3xl": "4rem"
+  },
+  "borderRadius": {
+    "sm": "0.25rem",
+    "md": "0.5rem",
+    "lg": "0.75rem",
+    "xl": "1rem",
+    "full": "9999px"
+  },
+  "shadows": {
+    "sm": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+    "md": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+    "lg": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+    "xl": "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+  },
+  "logo": {
+    "icon": {
+      "description": "Hexagonal node with stylized lowercase 'b' and ECG heartbeat line",
+      "minSize": "16x16",
+      "preferredSize": "256x256",
+      "clearSpace": "25% of icon size on all sides"
+    },
+    "full": {
+      "description": "Icon + wordmark (broker in bold, Hub in regular)",
+      "minWidth": "200px",
+      "preferredWidth": "400px"
+    },
+    "variants": [
+      "full-color",
+      "white-on-dark",
+      "dark-on-light",
+      "icon-only"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+version: '3.8'
+
+# Development overrides
+services:
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile.dev
+    environment:
+      NODE_ENV: development
+      DEBUG: brokerhub:*
+    volumes:
+      - ./apps/api:/app
+      - /app/node_modules
+    command: npm run dev
+
+  admin:
+    build:
+      context: .
+      dockerfile: apps/admin/Dockerfile.dev
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./apps/admin:/app
+      - /app/node_modules
+    command: npm run dev
+
+  pgadmin:
+    profiles: []  # Always include in dev

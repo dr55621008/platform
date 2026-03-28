@@ -1,0 +1,103 @@
+version: '3.8'
+
+services:
+  # PostgreSQL - Multi-schema ready
+  postgres:
+    image: postgres:15-alpine
+    container_name: brokerhub-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: brokerhub
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./infra/migrations:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis - Sessions & Rate Limiting
+  redis:
+    image: redis:7-alpine
+    container_name: brokerhub-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # API Service
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: brokerhub-api
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/brokerhub
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: ${JWT_SECRET:-brokerhub-dev-secret-key}
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./apps/api:/app
+      - /app/node_modules
+
+  # Admin Dashboard
+  admin:
+    build:
+      context: .
+      dockerfile: apps/admin/Dockerfile
+    container_name: brokerhub-admin
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      API_URL: http://api:3000
+    ports:
+      - "3001:80"
+    depends_on:
+      - api
+
+  # pgAdmin (Development Only)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: brokerhub-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@brokerhub.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    profiles:
+      - dev
+
+volumes:
+  postgres_data:
+  redis_data:
+  pgadmin_data:
+
+networks:
+  default:
+    name: brokerhub-network

@@ -1,0 +1,29 @@
+{
+  "name": "brokerhub",
+  "version": "0.1.0",
+  "description": "Multi-tenant AI workforce platform for insurance brokers",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "docker-compose -f docker-compose.dev.yml up",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "lint": "eslint . --ext .ts,.tsx",
+    "migrate": "tsx infra/scripts/migrate.ts",
+    "seed": "tsx infra/scripts/seed.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.0",
+    "tsx": "^4.7.0",
+    "eslint": "^8.56.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
