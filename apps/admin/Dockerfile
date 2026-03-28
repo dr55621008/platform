@@ -20,7 +20,7 @@ RUN npm run build
 # ============================================
 # Production Image (nginx)
 # ============================================
-FROM nginx:alpine
+FROM nginx:stable
 
 # Copy custom nginx config
 COPY apps/admin/nginx.conf /etc/nginx/conf.d/default.conf

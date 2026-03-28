@@ -25,7 +25,7 @@ RUN npx tsc
 # ============================================
 # Production Image
 # ============================================
-FROM node:20-alpine
+FROM node:20-slim
 
 WORKDIR /app
 
