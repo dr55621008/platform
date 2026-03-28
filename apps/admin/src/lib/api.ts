@@ -139,7 +139,7 @@ export const tenantsApi = {
 // ============================================
 
 export const creditsApi = {
-  getBalance: async (tenant_id: string) => {
+  getBalance: async (_tenant_id: string) => {
     const response = await api.get(`/credits/balance`);
     return response.data;
   },
