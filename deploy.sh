@@ -1,6 +1,7 @@
 #!/bin/bash
 # brokerHub One-Command Deploy (Docker Pre-Installed)
-# Usage: curl -fsSL https://raw.githubusercontent.com/dr55621008/platform/main/deploy.sh | bash
+# Usage: bash <(curl -fsSL https://raw.githubusercontent.com/dr55621008/platform/main/deploy.sh)
+# For private repos: export GITHUB_PAT=your_token before running
 
 set -e
 
@@ -22,7 +23,11 @@ if [ -d ".git" ]; then
   git pull origin main
 else
   echo "📦 Cloning repository..."
-  git clone https://github.com/dr55621008/platform.git .
+  if [ -n "$GITHUB_PAT" ]; then
+    git clone https://${GITHUB_PAT}@github.com/dr55621008/platform.git .
+  else
+    git clone https://github.com/dr55621008/platform.git .
+  fi
 fi
 
 # Create .env
