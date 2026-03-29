@@ -6,20 +6,18 @@ WORKDIR /app
 # Install build dependencies
 RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
 
-# Copy root package files
+# Copy root package files (for workspaces)
 COPY package*.json ./
-
-# Copy API package files
 COPY apps/api/package*.json ./apps/api/
 
-# Install dependencies for API (including dev for build)
-WORKDIR /app/apps/api
+# Install all dependencies (root + workspaces)
 RUN npm ci
 
 # Copy API source code
-COPY apps/api ./
+COPY apps/api ./apps/api
 
 # Build TypeScript
+WORKDIR /app/apps/api
 RUN npx tsc
 
 # ============================================
@@ -38,8 +36,8 @@ RUN groupadd -g 1001 nodejs && \
 
 # Copy built artifacts from builder
 COPY --from=builder --chown=nodejs:nodejs /app/apps/api/dist ./dist
-COPY --from=builder --chown=nodejs:nodejs /app/apps/api/node_modules ./node_modules
-COPY --from=builder --chown=nodejs:nodejs /app/apps/api/package.json ./
+COPY --from=builder --chown=nodejs:nodejs /app/node_modules ./node_modules
+COPY --from=builder --chown=nodejs:nodejs /app/apps/api/package.json ./package.json
 
 # Switch to non-root user
 USER nodejs
