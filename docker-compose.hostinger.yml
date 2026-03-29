@@ -1,0 +1,78 @@
+# Hostinger VPS - Build Locally
+# Remove version (obsolete) and use build context
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: brokerhub-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: brokerhub
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: brokerhub
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./infra/migrations:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U brokerhub"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - brokerhub-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: brokerhub-redis
+    restart: always
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - brokerhub-network
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: brokerhub-api
+    restart: always
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://brokerhub:${POSTGRES_PASSWORD}@postgres:5432/brokerhub
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: ${JWT_SECRET}
+      PORT: 3000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - brokerhub-network
+
+  admin:
+    build:
+      context: .
+      dockerfile: apps/admin/Dockerfile
+    container_name: brokerhub-admin
+    restart: always
+    environment:
+      NODE_ENV: production
+      VITE_API_URL: http://api:3000
+    depends_on:
+      - api
+    networks:
+      - brokerhub-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  brokerhub-network:
