@@ -48,6 +48,8 @@ services:
       REDIS_URL: redis://redis:6379
       JWT_SECRET: ${JWT_SECRET}
       PORT: 3000
+    ports:
+      - "3000:3000"
     depends_on:
       postgres:
         condition: service_healthy
@@ -65,6 +67,8 @@ services:
     environment:
       NODE_ENV: production
       VITE_API_URL: http://api:3000
+    ports:
+      - "3001:80"
     depends_on:
       - api
     networks:
